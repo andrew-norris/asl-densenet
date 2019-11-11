@@ -8,7 +8,7 @@ import keras.backend as K
 # We only test DenseNet-121 in this script for demo purpose
 from densenet161 import DenseNet
 
-im = cv2.resize(cv2.imread('E:/Workspace/asl-densenet/DenseNet-Keras/resources/cat.jpg'), (224, 224)).astype(np.float32)
+im = cv2.resize(cv2.imread('E:/Workspace/asl-densenet/DenseNet-Keras-master/resources/cat.jpg'), (224, 224)).astype(np.float32)
 #im = cv2.resize(cv2.imread('shark.jpg'), (224, 224)).astype(np.float32)
 
 # Subtract mean pixel and multiple by scaling constant 
