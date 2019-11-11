@@ -8,7 +8,7 @@ import keras.backend as K
 # We only test DenseNet-121 in this script for demo purpose
 from densenet161 import DenseNet
 
-im = cv2.resize(cv2.imread('E:/Workspace/asl-densenet/DenseNet-Keras-master/resources/cat.jpg'), (224, 224)).astype(np.float32)
+im = cv2.resize(cv2.imread('E:/Workspace/asl-densenet/DenseNet-Keras-master/resources/shark.jpg'), (224, 224)).astype(np.float32)
 #im = cv2.resize(cv2.imread('shark.jpg'), (224, 224)).astype(np.float32)
 
 # Subtract mean pixel and multiple by scaling constant 
@@ -22,10 +22,10 @@ if K.common.image_dim_ordering() == 'th':
   im = im.transpose((2,0,1))
 
   # Use pre-trained weights for Theano backend
-  weights_path = 'E:/Workspace/asl-densenet/DenseNet-Keras/imagenet_models/densenet161_weights_th.h5'
+  weights_path = 'E:/Workspace/asl-densenet/DenseNet-Keras-master/imagenet_models/densenet161_weights_th.h5'
 else:
   # Use pre-trained weights for Tensorflow backend
-  weights_path = 'E:/Workspace/asl-densenet/DenseNet-Keras/imagenet_models/densenet161_weights_tf.h5'
+  weights_path = 'E:/Workspace/asl-densenet/DenseNet-Keras-master/imagenet_models/densenet161_weights_tf.h5'
 
 # Insert a new dimension for the batch_size
 im = np.expand_dims(im, axis=0)
@@ -40,7 +40,7 @@ out = model.predict(im)
 
 # Load ImageNet classes file
 classes = []
-with open('resources/classes.txt', 'r') as list_:
+with open('E:/Workspace/asl-densenet/DenseNet-Keras-master/resources/classes.txt', 'r') as list_:
     for line in list_:
         classes.append(line.rstrip('\n'))
 
