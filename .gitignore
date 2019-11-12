@@ -1,3 +1,4 @@
 venv/
+.idea/
 
 DenseNet-Keras-master/imagenet_models/densenet161_weights_tf.h5
