@@ -2,6 +2,6 @@ venv/
 .idea/
 
 
-DenseNet-Keras-master/imagenet_models/densenet161_weights_tf.h5
+densenet_keras/imagenet_models/densenet161_weights_tf.h5
 
 asl-densenet-34e8c4caa7df.json

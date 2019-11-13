@@ -8,6 +8,8 @@ from sklearn.metrics import log_loss
 
 from loadData import load_data
 
+from densenet_keras import densenet161
+
 def vgg16_model(img_rows, img_cols, channel=1, num_classes=None):
     """VGG 16 Model for Keras
     Model Schema is based on
