@@ -11,10 +11,10 @@ import os
 img_rows, img_cols = 224
 '''
 # export this function for getting training set and valid set
-def loadData(img_rows, img_cols):
+def load_data(img_rows, img_cols):
 
     # Load cifar10 training and validation sets
-    (X_train, Y_train), (X_valid,Y_valid)= loadImage()
+    (X_train, Y_train), (X_valid,Y_valid)= load_image()
 
     # Resize trainging images
     if K.image_data_format() == 'th':
@@ -27,7 +27,7 @@ def loadData(img_rows, img_cols):
     return (X_train, Y_train), (X_valid, Y_valid)
 
 
-def loadImage():
+def load_image():
     datasetFolder = 'dataset'
     alphabetList = ['a','b','c','d','e','f','g','h','i','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y'] # 24 letters
 
