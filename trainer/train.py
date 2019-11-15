@@ -1,0 +1,40 @@
+# -*- coding: utf-8 -*-
+
+from sklearn.metrics import log_loss
+from loadData import load_data
+from densenet_keras.densenet161 import DenseNet
+
+
+def train():
+
+    img_rows, img_cols = 224, 224  # Resolution of inputs
+    channel = 3
+    num_classes = 26
+    batch_size = 16
+    nb_epoch = 10
+
+    # Load Cifar10 data. Please implement your own load_data() module for your own dataset
+    X_train, Y_train, X_valid, Y_valid = load_data(img_rows, img_cols)
+
+    # Load our model
+    model = DenseNet(classes=num_classes)
+
+    # Start Fine-tuning
+    model.fit(X_train, Y_train,
+              batch_size=batch_size,
+              nb_epoch=nb_epoch,
+              shuffle=True,
+              verbose=1,
+              validation_data=(X_valid, Y_valid),
+              )
+
+    # Make predictions
+    predictions_valid = model.predict(X_valid, batch_size=batch_size, verbose=1)
+
+    # Cross-entropy loss score
+    score = log_loss(Y_valid, predictions_valid)
+    print(score)
+
+
+if __name__ == "__main__":
+    train()
