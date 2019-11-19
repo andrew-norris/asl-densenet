@@ -6,7 +6,7 @@ from keras.layers.pooling import AveragePooling2D, GlobalAveragePooling2D, MaxPo
 from keras.layers.normalization import BatchNormalization
 import keras.backend as K
 
-from custom_layers import Scale
+from trainer.custom_layers import Scale
 
 def DenseNet(nb_dense_block=4, growth_rate=32, nb_filter=64, reduction=0.0, dropout_rate=0.0, weight_decay=1e-4, classes=1000, weights_path=None):
     '''Instantiate the DenseNet 121 architecture,

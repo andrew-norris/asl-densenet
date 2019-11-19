@@ -6,7 +6,7 @@ from keras.optimizers import SGD
 import keras.backend as K
 
 # We only test DenseNet-121 in this script for demo purpose
-from densenet161 import DenseNet
+from trainer.densenet161 import DenseNet
 
 im = cv2.resize(cv2.imread('E:/Workspace/asl-densenet/densenet_keras/resources/shark.jpg'), (224, 224)).astype(np.float32)
 #im = cv2.resize(cv2.imread('shark.jpg'), (224, 224)).astype(np.float32)

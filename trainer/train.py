@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from sklearn.metrics import log_loss
-from loadData import load_data
-from densenet_keras.densenet161 import DenseNet
+from trainer.loadData import load_data
+from trainer.densenet161 import DenseNet
 
 
 def train():
@@ -19,6 +19,10 @@ def train():
     # Load our model
     model = DenseNet(classes=num_classes)
 
+    print('loaded model')
+
+    model.compile()
+
     # Start Fine-tuning
     model.fit(X_train, Y_train,
               batch_size=batch_size,
@@ -27,6 +31,7 @@ def train():
               verbose=1,
               validation_data=(X_valid, Y_valid),
               )
+
 
     # Make predictions
     predictions_valid = model.predict(X_valid, batch_size=batch_size, verbose=1)
