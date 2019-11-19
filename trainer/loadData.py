@@ -20,7 +20,7 @@ img_rows, img_cols = 224
 '''
 # export this function for getting training set and valid set
 def load_data(img_rows, img_cols):
-    tf.keras.utils.get_file(origin="http://www.cvssp.org/FingerSpellingKinect2011/fingerspelling5.tar.bz2",
+    data = tf.keras.utils.get_file(origin="http://www.cvssp.org/FingerSpellingKinect2011/fingerspelling5.tar.bz2",
                                    fname='asl_fingerspelling', extract=True)
 
     # Load cifar10 training and validation sets
@@ -52,7 +52,7 @@ def load_image():
     YTrains = []
     # signers = np.array([item for item in glob.glob('/root/.keras/datasets/dataset5/*') if item != '/root/.keras/datasets/dataset5/E'])
     # print(signers)
-    signers = ['./.keras/datasets/dataset5/A']
+    signers = ['/root/.keras/datasets/dataset5/A']
     for signer in signers:
         letters = np.array([item for item in glob.glob(signer + '/a')])
         for letter in letters:
