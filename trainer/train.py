@@ -3,6 +3,7 @@
 from sklearn.metrics import log_loss
 from trainer.loadData import load_data
 from trainer.densenet161 import DenseNet
+from keras.optimizers import SGD
 
 
 def train():
@@ -23,8 +24,9 @@ def train():
 
     print('loaded model')
 
-    model.compile()
-
+    sgd = SGD(lr=1e-3, decay=1e-6, momentum=0.9, nesterov=True)
+    model.compile(optimizer=sgd, loss='categorical_crossentropy', metrics=['accuracy'])
+    
     # Start Fine-tuning
     model.fit(X_train, Y_train,
               batch_size=batch_size,
