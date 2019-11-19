@@ -32,8 +32,13 @@ def load_data(img_rows, img_cols):
     # Resize trainging images
     if K.image_data_format() == 'th':
         X_train = np.array([cv2.resize(img.transpose(1,2,0), (img_rows,img_cols)).transpose(2,0,1) for img in X_train])
+        X_valid = np.array([cv2.resize(img.transpose(1, 2, 0), (img_rows, img_cols)).transpose(2, 0, 1) for img in X_valid])
     else:
         X_train = np.array([cv2.resize(img, (img_rows,img_cols)) for img in X_train])
+        X_valid = np.array([cv2.resize(img, (img_rows, img_cols)) for img in X_valid])
+
+    Y_train = np.array(Y_train)
+    Y_valid = np.array(Y_valid)
 
     print('loaded_data')
 

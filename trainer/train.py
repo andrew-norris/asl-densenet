@@ -10,9 +10,9 @@ def train():
 
     img_rows, img_cols = 224, 224  # Resolution of inputs
     channel = 3
-    num_classes = 26
+    num_classes = 24
     batch_size = 16
-    nb_epoch = 10
+    nb_epoch = 2
 
 
 
@@ -26,7 +26,7 @@ def train():
 
     sgd = SGD(lr=1e-3, decay=1e-6, momentum=0.9, nesterov=True)
     model.compile(optimizer=sgd, loss='categorical_crossentropy', metrics=['accuracy'])
-    
+
     # Start Fine-tuning
     model.fit(X_train, Y_train,
               batch_size=batch_size,
@@ -37,12 +37,12 @@ def train():
               )
 
 
-    # Make predictions
-    predictions_valid = model.predict(X_valid, batch_size=batch_size, verbose=1)
-
-    # Cross-entropy loss score
-    score = log_loss(Y_valid, predictions_valid)
-    print(score)
+    # # Make predictions
+    # predictions_valid = model.predict(X_valid, batch_size=batch_size, verbose=1)
+    #
+    # # Cross-entropy loss score
+    # score = log_loss(Y_valid, predictions_valid)
+    # print(score)
 
 
 if __name__ == "__main__":
