@@ -13,6 +13,8 @@ def train():
     batch_size = 16
     nb_epoch = 10
 
+
+
     # Load Cifar10 data. Please implement your own load_data() module for your own dataset
     X_train, Y_train, X_valid, Y_valid = load_data(img_rows, img_cols)
 

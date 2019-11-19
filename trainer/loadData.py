@@ -20,6 +20,8 @@ img_rows, img_cols = 224
 '''
 # export this function for getting training set and valid set
 def load_data(img_rows, img_cols):
+    tf.keras.utils.get_file(origin="http://www.cvssp.org/FingerSpellingKinect2011/fingerspelling5.tar.bz2",
+                                   fname='asl_fingerspelling', extract=True)
 
     # Load cifar10 training and validation sets
     X_train, Y_train, X_valid, Y_valid = load_image()
@@ -39,14 +41,13 @@ def load_data(img_rows, img_cols):
 
 
 def load_image():
-    datasetFolder = 'trainer/dataset'
-    alphabetList = ['a','b','c','d','e','f','g','h','i','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y'] # 24 letters
 
-    signersListTrain = ['A','B','C','D'] # ['A','B','C','D']
+    alphabetList = ['a','b','c','d','e','f','g','h','i','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y'] # 24 letters
     XTrains = []
     YTrains = []
-    signers = np.array([item for item in glob.glob('/root/.keras/datasets/dataset5/*') if item != '/root/.keras/datasets/dataset5/E'])
-    print(signers)
+    # signers = np.array([item for item in glob.glob('/root/.keras/datasets/dataset5/*') if item != '/root/.keras/datasets/dataset5/E'])
+    # print(signers)
+    signers = ['./.keras/datasets/dataset5/A']
     for signer in signers:
         letters = np.array([item for item in glob.glob(signer + '/*')])
         for letter in letters:
