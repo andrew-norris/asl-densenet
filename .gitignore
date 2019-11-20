@@ -1,6 +1,7 @@
 venv/
 .idea/
 dataset/
+densenet_keras/
 
 trainer/imagenet_models/densenet161_weights_tf.h5
 
