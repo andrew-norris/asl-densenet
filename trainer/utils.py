@@ -10,14 +10,8 @@ DATA_URL = "http://www.cvssp.org/FingerSpellingKinect2011/fingerspelling5.tar.bz
 def download_dataset():
     # !/usr/bin/python
 
-    import os
 
-    # traverse root directory, and list directories as dirs and files as files
-    for root, dirs, files in os.walk("."):
-        path = root.split(os.sep)
-        print((len(path) - 1) * '---', os.path.basename(root))
-        for file in files:
-            print(len(path) * '---', file)
+    os.listdir('/root/.keras')
 
     # tf.keras.utils.get_file(origin=DATA_URL, fname='asl_fingerspelling', extract=True)
     #
