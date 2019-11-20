@@ -1,6 +1,7 @@
 import os
 import tensorflow as tf
 from keras.preprocessing.image import ImageDataGenerator
+from PIL import Image
 
 DATA_DIR = os.path.abspath('~/.keras/datasets')
 

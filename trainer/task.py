@@ -3,6 +3,7 @@ from trainer.model import dense_net
 import argparse
 import tensorflow as tf
 import os
+from PIL import Image
 
 def get_args():
   """Argument parser.
