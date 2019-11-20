@@ -73,10 +73,9 @@ def train(args):
     )
 
     export_path = os.path.join(args.job_dir, 'keras_export')
-    tf.contrib.saved_model.save_keras_model(model, export_path)
+    model.save(export_path)
     print('Model exported to: {}'.format(export_path))
 
 if __name__ == '__main__':
     args = get_args()
-    tf.logging.set_verbosity(args.verbosity)
     train(args)
