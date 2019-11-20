@@ -63,7 +63,7 @@ def train(args):
         model.fit_generator(
             train_generator,
             steps_per_epoch=batch_size,
-            valid_generator=valid_generator,
+            validation_data=valid_generator,
             validation_steps=batch_size,
             epochs=epochs
         )
