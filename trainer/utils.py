@@ -45,7 +45,7 @@ def get_next_generator(directory):
 
     train_datagen = ImageDataGenerator()
     return train_datagen.flow_from_directory(
-        directory=r"~/.keras/datasets/dataset5/" + directory,
+        directory=r"/root/.keras/datasets/dataset5/" + directory,
         target_size=(224, 224),
         color_mode="rgb",
         batch_size=32,
