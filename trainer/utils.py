@@ -11,7 +11,7 @@ def download_dataset():
     # !/usr/bin/python
 
 
-    os.listdir('/root/.keras')
+    print(os.listdir('/root/.keras'))
 
     # tf.keras.utils.get_file(origin=DATA_URL, fname='asl_fingerspelling', extract=True)
     #
