@@ -52,7 +52,7 @@ def load_image():
     YTrains = []
     # signers = np.array([item for item in glob.glob('/root/.keras/datasets/dataset5/*') if item != '/root/.keras/datasets/dataset5/E'])
     # print(signers)
-    signers = ['/home/jupyter/.keras/datasets/dataset5/A']
+    signers = ['~/.keras/datasets/dataset5/A']
     for signer in signers:
         letters = np.array([item for item in glob.glob(signer + '/*')])
         for letter in letters:
@@ -70,7 +70,7 @@ def load_image():
     XValids = []
     YValids = []
 
-    letters = np.array([item for item in glob.glob('/home/jupyter/.keras/datasets/dataset5/E/*')])
+    letters = np.array([item for item in glob.glob('~/.keras/datasets/dataset5/E/*')])
     for letter in letters:
         letter_dir = np.array([item for item in glob.glob(letter + '/*')])
         for file_name in letter_dir:
