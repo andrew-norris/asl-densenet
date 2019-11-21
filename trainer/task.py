@@ -59,7 +59,7 @@ def train(args):
 
     num_classes = 24
     batch_size = 32
-    epochs = 4
+    epochs = 16
     learning_rate = 0.001
     decay = 0.0001
     optimizer = 0
