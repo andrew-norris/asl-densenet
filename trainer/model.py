@@ -4,12 +4,25 @@ from keras.layers.core import Dense, Dropout, Activation
 from keras.layers.convolutional import Convolution2D, Conv2D
 from keras.layers.pooling import AveragePooling2D, GlobalAveragePooling2D, MaxPooling2D
 from keras.layers.normalization import BatchNormalization
-from keras.optimizers import SGD
+from keras.optimizers import SGD, Adam
 import keras.backend as K
 from trainer.custom_layers import Scale
 
 
-def dense_net(nb_dense_block=4, growth_rate=48, nb_filter=96, reduction=0.0, dropout_rate=0.0, weight_decay=1e-4, classes=1000, weights_path=None):
+def dense_net(
+        nb_dense_block=4,
+        growth_rate=48,
+        nb_filter=96,
+        reduction=0.0,
+        dropout_rate=0.0,
+        weight_decay=1e-4,
+        classes=1000,
+        learning_rate=0.001,
+        decay=0.0001,
+        momentum=0.9,
+        optimizer=0,
+        weights_path=None
+):
 
     """Instantiate the DenseNet 161 architecture,
         # Arguments
@@ -77,8 +90,12 @@ def dense_net(nb_dense_block=4, growth_rate=48, nb_filter=96, reduction=0.0, dro
     if weights_path is not None:
       model.load_weights(weights_path)
 
-    sgd = SGD(lr=1e-3, decay=1e-6, momentum=0.9, nesterov=True)
-    model.compile(optimizer=sgd, loss='categorical_crossentropy', metrics=['accuracy'])
+    if optimizer == 0:
+        model = SGD(lr=learning_rate, decay=decay, momentum=momentum, nesterov=True)
+    elif optimizer == 1:
+        model = Adam(learning_rate)
+
+    model.compile(optimizer=model, loss='categorical_crossentropy', metrics=['accuracy'])
 
     return model
 
