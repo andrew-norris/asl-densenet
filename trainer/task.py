@@ -60,9 +60,9 @@ def train(args):
     num_classes = 24
     batch_size = 32
     epochs = 4
-    learning_rate = 0.001
-    decay = 0.0001
-    optimizer = 1
+    learning_rate = 0.01
+    decay = 0.001
+    optimizer = 0
     set_size = 3
 
     model = dense_net(
