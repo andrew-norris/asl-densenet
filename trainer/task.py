@@ -58,12 +58,12 @@ def train(args):
     train_generator, valid_generator = utils.download_dataset()
 
     num_classes = 24
-    batch_size = args.batch_size
-    epochs = args.num_epochs
-    learning_rate = args.learning_rate
-    decay = args.decay
-    optimizer = args.optimizer
-    set_size = args.set_size
+    batch_size = 32
+    epochs = 8
+    learning_rate = 0.001
+    decay = 0.0001
+    optimizer = 0
+    set_size = 3
 
     model = dense_net(
         classes=num_classes,
