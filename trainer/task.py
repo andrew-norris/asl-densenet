@@ -45,7 +45,7 @@ def get_args():
       default=0,
       type=int)
   parser.add_argument(
-      '--set-size',
+      '--dataset-size',
       default=1,
       type=int
   )
