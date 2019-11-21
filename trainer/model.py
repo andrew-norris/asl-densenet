@@ -91,11 +91,11 @@ def dense_net(
       model.load_weights(weights_path)
 
     if optimizer == 0:
-        model = SGD(lr=learning_rate, decay=decay, momentum=momentum, nesterov=True)
+        optimizer = SGD(lr=learning_rate, decay=decay, momentum=momentum, nesterov=True)
     elif optimizer == 1:
-        model = Adam(learning_rate)
+        optimizer = Adam(learning_rate)
 
-    model.compile(optimizer=model, loss='categorical_crossentropy', metrics=['accuracy'])
+    model.compile(optimizer=optimizer, loss='categorical_crossentropy', metrics=['accuracy'])
 
     return model
 
