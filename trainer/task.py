@@ -45,7 +45,7 @@ def train(args):
 
     num_classes = 24
     batch_size = 32
-    epochs = 4
+    epochs = 8
 
     model = dense_net(classes=num_classes)
 
@@ -57,16 +57,16 @@ def train(args):
         epochs=epochs
     )
 
-    directories = ['B/', 'C/']
-    for directory in directories:
-        train_generator = utils.get_next_generator(directory)
-        model.fit_generator(
-            train_generator,
-            steps_per_epoch=batch_size,
-            validation_data=valid_generator,
-            validation_steps=batch_size,
-            epochs=epochs
-        )
+    # directories = ['B/', 'C/']
+    # for directory in directories:
+    #     train_generator = utils.get_next_generator(directory)
+    #     model.fit_generator(
+    #         train_generator,
+    #         steps_per_epoch=batch_size,
+    #         validation_data=valid_generator,
+    #         validation_steps=batch_size,
+    #         epochs=epochs
+    #     )
 
     model.evaluate_generator(
         valid_generator,
