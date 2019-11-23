@@ -7,8 +7,7 @@ from keras.layers.convolutional import Convolution2D
 from keras.layers.pooling import AveragePooling2D, GlobalAveragePooling2D, MaxPooling2D
 from keras.layers.normalization import BatchNormalization
 from keras.models import Model
-import keras.backend as K
-from custom_layers.scale_layer import Scale
+import keras.backend as K   
 
 def dense_net(color_type=1, nb_dense_block=4, growth_rate=48, nb_filter=96, reduction=0.5, dropout_rate=0.0, weight_decay=1e-4, num_classes=None):
     '''
