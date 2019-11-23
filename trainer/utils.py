@@ -19,7 +19,7 @@ def download_dataset():
     test_datagen = ImageDataGenerator()
 
     train_generator = train_datagen.flow_from_directory(
-        directory=r"/root/.keras/datasets/dataset5/A",
+        directory=r"/root/.keras/datasets/dataset5/A/color*.png",
         target_size=(224, 224),
         color_mode="rgb",
         batch_size=32,
@@ -29,7 +29,7 @@ def download_dataset():
     )
 
     valid_generator = valid_datagen.flow_from_directory(
-        directory=r"/root/.keras/datasets/dataset5/D/",
+        directory=r"/root/.keras/datasets/dataset5/D/color*.png",
         target_size=(224, 224),
         color_mode="rgb",
         batch_size=32,

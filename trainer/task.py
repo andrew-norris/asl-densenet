@@ -71,7 +71,8 @@ def train(args):
         learning_rate=learning_rate,
         decay=decay,
         optimizer=optimizer,
-        weights_path='/root/densenet161_weights_tf.h5'
+        weights_path=None
+        # weights_path='/root/densenet161_weights_tf.h5'
     )
 
     model.fit_generator(
@@ -106,7 +107,6 @@ def train(args):
 
     export_path = os.path.join(args.job_dir, 'keras_export')
     model.save(export_path)
-    tf.saved
 
     print('Model exported to: {}'.format(export_path))
 
