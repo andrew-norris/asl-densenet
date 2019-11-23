@@ -1,7 +1,7 @@
 import os
 import tensorflow as tf
 from keras.preprocessing.image import ImageDataGenerator
-from PIL import Image
+from google.cloud import storage
 
 DATA_DIR = os.path.abspath('~/.keras/datasets')
 
@@ -53,3 +53,13 @@ def get_next_generator(directory):
         shuffle=True,
         seed=42
     )
+
+def download_pretrained_weights():
+    bucket_name = os.environ['BUCKET_NAME']
+    client = storage.Client(project='asl-densenet')
+    bucket = client.get_bucket(bucket_name)
+    weights = bucket.get_blob('imagenet_models/densenet161_weights_tf.h5')
+
+    with open("/root/content", "wb") as file_obj:
+        print(file_obj)
+        weights.download_to_filename('densenet161_weights_tf.h5', client)

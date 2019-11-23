@@ -3,7 +3,6 @@ from trainer.model import dense_net
 import argparse
 import tensorflow as tf
 import os
-from PIL import Image
 
 def get_args():
   """Argument parser.
@@ -55,21 +54,24 @@ def get_args():
 
 def train(args):
 
+    utils.download_pretrained_weights()
+
     train_generator, valid_generator = utils.download_dataset()
 
     num_classes = 24
     batch_size = 32
-    epochs = 4
+    epochs = 1
     learning_rate = 0.001
     decay = 0.0001
     optimizer = 0
-    set_size = 4
+    set_size = 1
 
     model = dense_net(
         classes=num_classes,
         learning_rate=learning_rate,
         decay=decay,
-        optimizer=optimizer
+        optimizer=optimizer,
+        weights_path='/root/densenet161_weights_tf.h5'
     )
 
     model.fit_generator(
@@ -104,6 +106,8 @@ def train(args):
 
     export_path = os.path.join(args.job_dir, 'keras_export')
     model.save(export_path)
+    tf.saved
+
     print('Model exported to: {}'.format(export_path))
 
 if __name__ == '__main__':
