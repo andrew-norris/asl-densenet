@@ -62,4 +62,4 @@ def download_pretrained_weights():
     wd = os.getcwd()
     print(wd)
 
-    weights.download_to_file('/root/densenet161_weights_tf.h5', client)
+    weights.download_to_filename('/root/densenet161_weights_tf.h5', client)
