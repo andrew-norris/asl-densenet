@@ -59,6 +59,7 @@ def download_pretrained_weights():
     bucket = client.get_bucket('asl-densenet-final-project')
     weights = bucket.get_blob('imagenet_models/densenet161_weights_tf.h5')
 
-    with open("/root", "wb") as file_obj:
-        print(file_obj)
-        weights.download_to_filename('densenet161_weights_tf.h5', client)
+    wd = os.getcwd()
+    print(wd)
+
+    weights.download_to_file('/root/densenet161_weights_tf.h5', client)
