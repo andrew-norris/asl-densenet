@@ -91,10 +91,10 @@ def dense_net(color_type=1, nb_dense_block=4, growth_rate=48, nb_filter=96, redu
 
     if K.common.image_dim_ordering() == 'th':
       # Use pre-trained weights for Theano backend
-      weights_path = 'imagenet_models/densenet161_weights_th.h5'
+      weights_path = '/root/densenet161_weights_th.h5'
     else:
       # Use pre-trained weights for Tensorflow backend
-      weights_path = 'imagenet_models/densenet161_weights_tf.h5'
+      weights_path = '/root/densenet161_weights_tf.h5'
 
     model.load_weights(weights_path, by_name=True)
 
