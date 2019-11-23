@@ -8,12 +8,7 @@ from keras.layers.pooling import AveragePooling2D, GlobalAveragePooling2D, MaxPo
 from keras.layers.normalization import BatchNormalization
 from keras.models import Model
 import keras.backend as K
-
-from sklearn.metrics import log_loss
-
 from custom_layers.scale_layer import Scale
-
-from load_cifar10 import load_cifar10_data
 
 def dense_net(color_type=1, nb_dense_block=4, growth_rate=48, nb_filter=96, reduction=0.5, dropout_rate=0.0, weight_decay=1e-4, num_classes=None):
     '''
