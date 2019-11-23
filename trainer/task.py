@@ -67,11 +67,11 @@ def train(args):
     set_size = 1
 
     model = dense_net(
-        classes=num_classes,
-        learning_rate=learning_rate,
-        decay=decay,
-        optimizer=optimizer,
-        weights_path=None
+        num_classes=num_classes,
+        # learning_rate=learning_rate,
+        # decay=decay,
+        # optimizer=optimizer,
+        # weights_path=None
         # weights_path='/root/densenet161_weights_tf.h5'
     )
 
