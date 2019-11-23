@@ -55,9 +55,8 @@ def get_next_generator(directory):
     )
 
 def download_pretrained_weights():
-    bucket_name = os.environ['BUCKET_NAME']
     client = storage.Client(project='asl-densenet')
-    bucket = client.get_bucket(bucket_name)
+    bucket = client.get_bucket('asl-densenet-final-project')
     weights = bucket.get_blob('imagenet_models/densenet161_weights_tf.h5')
 
     with open("/root/content", "wb") as file_obj:
