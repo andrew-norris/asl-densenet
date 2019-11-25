@@ -64,7 +64,7 @@ def train(args):
     learning_rate = 0.001
     decay = 0.0001
     optimizer = 0
-    set_size = 1
+    set_size = 4
 
     model = dense_net(
         num_classes=num_classes,
