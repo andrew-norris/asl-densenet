@@ -1,4 +1,5 @@
 import os
+import glob
 import tensorflow as tf
 from keras.preprocessing.image import ImageDataGenerator
 from google.cloud import storage
@@ -12,12 +13,13 @@ def download_dataset():
 
     tf.keras.utils.get_file(origin=DATA_URL, fname='asl_fingerspelling', extract=True)
 
-    # path = '/root/.keras/datasets/dataset5'
-    # for root, dirs, files in os.walk(path):
-    #     for currentFile in files:
-    #         depth = ('depth*.png')
-    #         if currentFile.match(depth):
-    #             os.remove(os.path.join(root, currentFile))
+    fileList = glob.glob('/root/.keras/datasets/dataset5/**/depth*', recursive=True)
+
+    for filePath in fileList:
+        try:
+            os.remove(filePath)
+        except OSError:
+            print("error")
 
     print(os.listdir('/root/.keras/datasets/dataset5'))
 
