@@ -63,7 +63,7 @@ def train(args):
     epochs = 1
     learning_rate = 0.001
     decay = 0.0001
-    optimizer = 0                      
+    optimizer = 0
     set_size = 4
 
     model = dense_net(
@@ -87,13 +87,10 @@ def train(args):
     if set_size == 3:
         directories = ['B/', 'C/']
     elif set_size == 4:
-        directories = ['B/', 'C/', 'E']
-		
-	print(directories)
+        directories = ['B/', 'C/', 'E/']
 
     if set_size != 1:
         for directory in directories:
-			print('training on', directory)
             train_generator = utils.get_next_generator(directory)
             model.fit_generator(
                 train_generator,
@@ -108,7 +105,7 @@ def train(args):
         steps=batch_size
     )
 
-    export_path = os.path.join(args.job_dir, 'keras_export.h5')
+    export_path = os.path.join(args.job_dir, 'keras_export')
     model.save(export_path)
 
     print('Model exported to: {}'.format(export_path))
