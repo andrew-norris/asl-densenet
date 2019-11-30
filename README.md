@@ -1,4 +1,4 @@
-# asl-densenet
+# asl-densenet: https://github.com/andrew-norris/asl-densenet
 
 # Problem Definition
 Individuals with a hearing impairment often find it challenging to communicate with those without hearing impairments. This can be a significant issue when those individuals need to convey important information such as appointments, when an interpreter is not available to assist.
