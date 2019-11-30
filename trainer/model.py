@@ -11,7 +11,21 @@ import keras.backend as K
 
 from trainer.custom_layers import Scale
 
-def dense_net(color_type=1, nb_dense_block=4, growth_rate=48, nb_filter=96, reduction=0.5, dropout_rate=0.0, weight_decay=1e-4, num_classes=None):
+def dense_net(
+        color_type=1,
+        nb_dense_block=4,
+        growth_rate=48,
+        nb_filter=96,
+        reduction=0.5,
+        dropout_rate=0.0,
+        weight_decay=1e-4,
+        num_classes=None,
+        learning_rate=learning_rate,
+        decay=decay,
+        optimizer=optimizer,
+        weights_path='/root/densenet161_weights_tf.h5'
+
+):
     '''
     DenseNet 161 Model for Keras
 
@@ -21,6 +35,7 @@ def dense_net(color_type=1, nb_dense_block=4, growth_rate=48, nb_filter=96, redu
     ImageNet Pretrained Weights
     Theano: https://drive.google.com/open?id=0Byy2AcGyEVxfVnlCMlBGTDR3RGs
     TensorFlow: https://drive.google.com/open?id=0Byy2AcGyEVxfUDZwVjU2cFNidTA
+
 
     # Arguments
         nb_dense_block: number of dense blocks to add to end

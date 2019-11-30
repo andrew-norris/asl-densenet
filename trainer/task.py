@@ -52,11 +52,14 @@ def get_args():
   args, _ = parser.parse_known_args()
   return args
 
+
+WEIGHTS_PATH = '/root/densenet161_weights_tf.h5'
+IS_LOCAL = False
+MODEL_EXPORT_PATH = '/root/keras_export.h5'
+KERAS_PATH = '/root/.keras/'
+DATASET_DOWNLOAD_PATH = os.path.join(KERAS_PATH, 'datasets/dataset5/')
+
 def train(args):
-
-    utils.download_pretrained_weights()
-
-    train_generator, valid_generator = utils.download_dataset()
 
     num_classes = 24
     batch_size = 32
@@ -66,13 +69,17 @@ def train(args):
     optimizer = 0
     set_size = 4
 
+
+    utils.download_pretrained_weights()
+
+    train_generator, valid_generator = utils.download_dataset(DATASET_DOWNLOAD_PATH)
+
     model = dense_net(
         num_classes=num_classes,
-        # learning_rate=learning_rate,
-        # decay=decay,
-        # optimizer=optimizer,
-        # weights_path=None
-        # weights_path='/root/densenet161_weights_tf.h5'
+        learning_rate=learning_rate,
+        decay=decay,
+        optimizer=optimizer,
+        weights_path=WEIGHTS_PATH
     )
 
     model.fit_generator(
@@ -91,7 +98,7 @@ def train(args):
 
     if set_size != 1:
         for directory in directories:
-            train_generator = utils.get_next_generator(directory)
+            train_generator = utils.get_next_generator(DATASET_DOWNLOAD_PATH, directory)
             model.fit_generator(
                 train_generator,
                 steps_per_epoch=batch_size,
@@ -105,7 +112,11 @@ def train(args):
         steps=batch_size
     )
 
-    export_path = os.path.join(args.job_dir, 'keras_export.h5')
+    if IS_LOCAL:
+        export_path = MODEL_EXPORT_PATH
+    else:
+        export_path = os.path.join(args.job_dir, 'keras_export.h5')
+
     model.save(export_path)
 
     print('Model exported to: {}'.format(export_path))
