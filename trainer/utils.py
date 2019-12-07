@@ -13,7 +13,7 @@ def download_dataset(dataset_download_path):
 
     tf.keras.utils.get_file(origin=DATA_URL, fname='asl_fingerspelling', extract=True)
 
-    depth_files_path = os.defpath.join(dataset_download_path, '**/depth*')
+    depth_files_path = os.path.join(dataset_download_path, '**/depth*')
 
     file_list = glob.glob(depth_files_path, recursive=True)
 
