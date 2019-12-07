@@ -20,9 +20,9 @@ def dense_net(
         dropout_rate=0.0,
         weight_decay=1e-4,
         num_classes=None,
-        learning_rate=learning_rate,
-        decay=decay,
-        optimizer=optimizer,
+        learning_rate=1e-3,
+        decay=1e-6,
+        optimizer=None,
         weights_path='/root/densenet161_weights_tf.h5'
 
 ):
@@ -100,12 +100,12 @@ def dense_net(
 
     model = Model(img_input, x_fc, name='densenet')
 
-    if K.common.image_dim_ordering() == 'th':
-      # Use pre-trained weights for Theano backend
-      weights_path = '/root/densenet161_weights_th.h5'
-    else:
-      # Use pre-trained weights for Tensorflow backend
-      weights_path = '/root/densenet161_weights_tf.h5'
+    # if K.common.image_dim_ordering() == 'th':
+    #   # Use pre-trained weights for Theano backend
+    #   weights_path = '/root/densenet161_weights_th.h5'
+    # else:
+    #   # Use pre-trained weights for Tensorflow backend
+    #   weights_path = '/root/densenet161_weights_tf.h5'
 
     model.load_weights(weights_path, by_name=True)
 
@@ -119,7 +119,7 @@ def dense_net(
     model = Model(img_input, x_newfc)
 
     # Learning rate is changed to 0.001
-    sgd = SGD(lr=1e-3, decay=1e-6, momentum=0.9, nesterov=True)
+    sgd = SGD(lr=learning_rate, decay=decay, momentum=0.9, nesterov=True)
     model.compile(optimizer=sgd, loss='categorical_crossentropy', metrics=['accuracy'])
 
     return model
