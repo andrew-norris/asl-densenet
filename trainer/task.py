@@ -65,11 +65,11 @@ def train(args):
 
     num_classes = 24
     batch_size = 32
-    epochs = 1
+    epochs = 8
     learning_rate = 0.001
     decay = 0.0001
     optimizer = 0
-    set_size = 1
+    set_size = 4
 
 
     utils.download_pretrained_weights()
