@@ -3,6 +3,8 @@ from trainer.model import dense_net
 import argparse
 import tensorflow as tf
 import os
+from sklearn.metrics import classification_report, confusion_matrix
+import numpy as np
 
 def get_args():
   """Argument parser.
@@ -63,11 +65,11 @@ def train(args):
 
     num_classes = 24
     batch_size = 32
-    epochs = 4
+    epochs = 1
     learning_rate = 0.001
     decay = 0.0001
     optimizer = 0
-    set_size = 4
+    set_size = 1
 
 
     utils.download_pretrained_weights()
@@ -118,6 +120,15 @@ def train(args):
         export_path = os.path.join(args.job_dir, 'keras_export.h5')
 
     model.save(export_path)
+
+    Y_pred = model.predict_generator(valid_generator)
+    y_pred = np.argmax(Y_pred, axis=1)
+
+    print("Confusion Matrix")
+    print(confusion_matrix(valid_generator.classes, y_pred))
+
+    print("classification report")
+    print(classification_report(valid_generator.classes, y_pred))
 
     print('Model exported to: {}'.format(export_path))
 
