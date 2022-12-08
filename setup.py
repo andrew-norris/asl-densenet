@@ -4,7 +4,7 @@ from setuptools import setup
 REQUIRED_PACKAGES = ['absl-py==0.8.1',
                      'astor==0.8.0',
                      'cachetools==3.1.1',
-                     'certifi==2019.9.11',
+                     'certifi==2022.12.7',
                      'chardet==3.0.4',
                      'gast==0.2.2',
                      'google-api-core==1.14.3',
